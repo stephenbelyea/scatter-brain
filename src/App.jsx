@@ -8,9 +8,9 @@ export const App = () => {
       <nav>
         <p>Scatter Brain</p>
         <NavLink to="/">Home</NavLink>
-        {Object.entries(PEOPLE).map((person) => (
-          <NavLink key={person[0]} to={`/${person[1].key}`}>
-            {person[1].label}
+        {Object.entries(PEOPLE).map(([key, person]) => (
+          <NavLink key={key} to={`/${person.key}`}>
+            {person.label}
           </NavLink>
         ))}
       </nav>

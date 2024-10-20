@@ -29,4 +29,5 @@ export const ALL_PEOPLE_LISTS = [
       ],
     },
   ]),
+  mapListsWithIds(PEOPLE.ELLIOTT, []),
 ];

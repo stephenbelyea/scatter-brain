@@ -35,3 +35,73 @@
 .app > nav a[aria-current="page"] {
   color: var(--link-hocus-colour);
 }
+
+/* PERSON VIEW */
+
+.person-view fieldset {
+  margin: 2rem 0;
+  border: none;
+  padding: 0;
+}
+
+h2,
+.person-view legend {
+  font-size: 1.75rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.person-view .item {
+  position: relative;
+  margin: 0.75rem 0;
+}
+
+.person-view .item input[type="checkbox"] {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.person-view .item .checkbox {
+  display: flex;
+  cursor: pointer;
+  padding: 0.5rem 1.5rem;
+  border: solid 0.1em rgba(255, 255, 255, 0.25);
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 0.25rem;
+  gap: 1rem;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.person-view .item .checkbox .icon {
+  font-weight: bold;
+  font-size: 2em;
+  flex: 0 0 2rem;
+  opacity: 0.05;
+}
+
+.person-view .item .checkbox .text {
+  font-size: 1.15em;
+  flex: 1 1 auto;
+}
+
+.person-view .item .checkbox:hover,
+.person-view .item input[type="checkbox"]:focus + .checkbox {
+  background: rgba(0, 0, 0, 0.15);
+  border-color: rgba(255, 255, 255, 0.65);
+}
+
+.person-view .item input[type="checkbox"]:checked + .checkbox {
+  background: rgba(11, 44, 11, 0.35) !important;
+  border-color: rgba(79, 212, 79, 0.75) !important;
+}
+
+.person-view .item input[type="checkbox"]:checked + .checkbox .icon {
+  opacity: 1;
+}
+
+.person-view .item .checkbox:active,
+.person-view .item input[type="checkbox"]:active + .checkbox {
+  transform: scale(1.015);
+}
