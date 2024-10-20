@@ -1,13 +1,27 @@
 :root {
+  --bg-colour: #242424;
+  --text-colour: #fdf7f7f1;
+  --link-colour: #ffaeae;
+  --link-hocus-colour: #fff;
+
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  font-size: 100%;
 
-  color: rgba(255, 255, 255, 0.95);
-  background-color: #242424;
+  color: var(--text-colour);
+  background-color: var(--bg-colour);
 }
 
 body {
   min-height: 100vh;
+  font-size: 1.15rem;
+}
+
+a {
+  color: var(--link-colour);
+}
+
+a:hover,
+a:focus {
+  color: var(--link-hocus-colour);
 }
