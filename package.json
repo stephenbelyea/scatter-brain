@@ -1,30 +1,21 @@
 {
   "name": "scatter-brain",
-  "private": true,
-  "version": "0.1.0",
-  "type": "module",
+  "version": "1.0.0",
+  "description": "Reign in the chaos of daily tasks and keep score along the way",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stephenbelyea/scatter-brain.git"
+  },
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview",
-    "start": "vite"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev:app": "cd app && npm install && npm run dev",
+    "dev:studio": "cd studio && npm install && npm run dev",
+    "dev": "npx ttab 'npm run dev:app' && npx ttab 'npm run dev:studio'"
   },
-  "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-router-dom": "^6.27.0"
+  "author": {
+    "name": "stephenbelyea",
+    "url": "https://github.com/stephenbelyea"
   },
-  "devDependencies": {
-    "@eslint/js": "^9.11.1",
-    "@types/react": "^18.3.10",
-    "@types/react-dom": "^18.3.0",
-    "@vitejs/plugin-react": "^4.3.2",
-    "eslint": "^9.11.1",
-    "eslint-plugin-react": "^7.37.0",
-    "eslint-plugin-react-hooks": "^5.1.0-rc.0",
-    "eslint-plugin-react-refresh": "^0.4.12",
-    "globals": "^15.9.0",
-    "vite": "^5.4.8"
-  }
+  "license": "ISC"
 }
