@@ -4,7 +4,8 @@ import { AppContext } from "../context";
 
 export const usePersonLists = () => {
   const { slug } = useParams();
-  const { persons, taskLists, taskItems } = useContext(AppContext);
+  const { persons, taskLists, taskItems, allCheckedItems, todayDate } =
+    useContext(AppContext);
 
   const person = useMemo(
     () => persons.find((per) => per.slug === slug),
@@ -24,7 +25,19 @@ export const usePersonLists = () => {
     [person, taskLists, taskItems]
   );
 
+  const checkedItems = useMemo(
+    () => allCheckedItems.filter((item) => item.personId === person?.id),
+    [allCheckedItems, person]
+  );
+
+  const todayCheckedItems = useMemo(
+    () => checkedItems.filter((item) => item.date === todayDate),
+    [checkedItems, todayDate]
+  );
+
   return {
+    checkedItems,
+    todayCheckedItems,
     person,
     lists,
   };

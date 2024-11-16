@@ -1,28 +1,27 @@
-import { useState } from "react";
 import { Layout } from "../components";
 import { usePersonLists } from "../hooks";
 
 import "./person.css";
 
 export const Person = () => {
-  const { person, lists } = usePersonLists();
-  const [checkedItems, setCheckedItems] = useState([]);
+  const { person, lists, todayCheckedItems } = usePersonLists();
 
   const isItemInCheckedItems = (itemId, listId) =>
-    checkedItems.filter(
+    todayCheckedItems.filter(
       (checked) => checked.itemId === itemId && checked.listId === listId
     ).length !== 0;
 
   const onChangeItem = (itemId, listId) => {
-    let updateCheckedItems = [];
-    if (isItemInCheckedItems(itemId, listId)) {
-      updateCheckedItems = checkedItems.filter(
-        (item) => !(itemId === item.itemId && listId === item.listId)
-      );
-    } else {
-      updateCheckedItems = [...checkedItems, { itemId, listId }];
-    }
-    setCheckedItems(updateCheckedItems);
+    console.log(itemId, listId);
+    // let updateCheckedItems = [];
+    // if (isItemInCheckedItems(itemId, listId)) {
+    //   updateCheckedItems = checkedItems.filter(
+    //     (item) => !(itemId === item.itemId && listId === item.listId)
+    //   );
+    // } else {
+    //   updateCheckedItems = [...checkedItems, { itemId, listId }];
+    // }
+    // setCheckedItems(updateCheckedItems);
   };
 
   const onSubmitForm = (e) => {
