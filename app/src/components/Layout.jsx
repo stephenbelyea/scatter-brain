@@ -3,14 +3,16 @@ import { NavLink } from "react-router-dom";
 import { AppContext } from "../context";
 
 import "./layout.css";
+import { Loading } from "./Loading";
+import { Logo } from "./Logo";
 
 export const Layout = ({ children }) => {
-  const { persons } = useContext(AppContext);
+  const { persons, loading } = useContext(AppContext);
 
   return (
     <div className="app layout">
       <nav>
-        <p>ScatterBrain</p>
+        <Logo />
         <NavLink to="/">Home</NavLink>
         {persons.map((person) => (
           <NavLink key={person.slug} to={`/person/${person.slug}`}>
@@ -19,6 +21,12 @@ export const Layout = ({ children }) => {
         ))}
       </nav>
       <main>{children}</main>
+      <footer>
+        <p>
+          Made by <a href="https://belwerks.com">Belwerks</a>
+        </p>
+      </footer>
+      <Loading loading={loading} />
     </div>
   );
 };
