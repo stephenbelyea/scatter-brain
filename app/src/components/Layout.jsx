@@ -11,7 +11,7 @@ export const Layout = ({ children }) => {
     <div className="app layout">
       <nav>
         <p>ScatterBrain</p>
-        <NavLink to="/">Dashboard</NavLink>
+        <NavLink to="/">Home</NavLink>
         {persons.map((person) => (
           <NavLink key={person.slug} to={`/person/${person.slug}`}>
             {person.name}

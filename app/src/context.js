@@ -4,4 +4,5 @@ export const AppContext = createContext({
   persons: [],
   taskItems: [],
   taskLists: [],
+  loading: false,
 });
