@@ -14,7 +14,7 @@ export const Person = () => {
 
   return (
     <Layout>
-      <h1>{person.name}</h1>
+      <h1>{person?.name}</h1>
     </Layout>
   );
 };

@@ -1,14 +1,16 @@
-/* eslint-disable react/prop-types */
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { AppContext } from "../context";
+
+import "./layout.css";
 
 export const Layout = ({ children }) => {
   const { persons } = useContext(AppContext);
 
   return (
-    <div className="layout">
+    <div className="app layout">
       <nav>
+        <p>ScatterBrain</p>
         <NavLink to="/">Dashboard</NavLink>
         {persons.map((person) => (
           <NavLink key={person.slug} to={`/person/${person.slug}`}>
