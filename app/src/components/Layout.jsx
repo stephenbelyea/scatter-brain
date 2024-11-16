@@ -1,16 +1,16 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { AppContext } from "../context";
-
-import "./layout.css";
 import { Loading } from "./Loading";
 import { Logo } from "./Logo";
 
-export const Layout = ({ children }) => {
+import "./layout.css";
+
+export const Layout = ({ view = "", children }) => {
   const { persons, loading } = useContext(AppContext);
 
   return (
-    <div className="app layout">
+    <div className={`app layout view-${view}`}>
       <nav>
         <Logo />
         <NavLink to="/">Home</NavLink>
