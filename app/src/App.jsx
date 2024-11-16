@@ -1,35 +1,18 @@
 import { useEffect, useState } from "react";
-import { client } from "./sanity/client";
-import "./App.css";
+import { RouterProvider } from "react-router-dom";
+import { queryFetchTaskItems, queryFetchTaskLists } from "./queries";
+import { AppContext } from "./context";
+import { appRouter } from "./router";
+import { usePersons, useTaskItems, useTaskLists } from "./hooks";
 
-const PERSONS_QUERY = `*[_type == "person"]`;
-
-function App() {
-  const [persons, setPersons] = useState([]);
-
-  useEffect(() => {
-    const fetchPersons = async () => {
-      const personsResponse = await client.fetch(PERSONS_QUERY);
-      setPersons(personsResponse);
-    };
-    if (persons.length === 0) {
-      fetchPersons();
-    }
-  }, [persons]);
+export const App = () => {
+  const { persons } = usePersons();
+  const { taskItems } = useTaskItems();
+  const { taskLists } = useTaskLists();
 
   return (
-    <>
-      <h1>Scatter Brain</h1>
-      <div>
-        <h2>People:</h2>
-        <ul>
-          {persons.map((person) => (
-            <li key={person.name}>{person.name}</li>
-          ))}
-        </ul>
-      </div>
-    </>
+    <AppContext.Provider value={{ persons, taskItems, taskLists }}>
+      <RouterProvider router={appRouter} />
+    </AppContext.Provider>
   );
-}
-
-export default App;
+};
