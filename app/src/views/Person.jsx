@@ -1,20 +1,27 @@
-import { useContext, useMemo } from "react";
-import { useParams } from "react-router-dom";
-import { AppContext } from "../context";
 import { Layout } from "../components";
+import { usePersonLists } from "../hooks";
 
 export const Person = () => {
-  const { slug } = useParams();
-  const { persons } = useContext(AppContext);
-
-  const person = useMemo(
-    () => persons.find((per) => per.slug === slug),
-    [persons, slug]
-  );
+  const { person, lists } = usePersonLists();
 
   return (
     <Layout>
       <h1>{person?.name}</h1>
+      {lists.map((list) => {
+        return (
+          <div className="list" key={list?.id}>
+            <p>{list?.name}</p>
+            <ul>
+              {list?.items?.map((item) => (
+                <li key={item?.id}>
+                  {item?.title} <br />
+                  <small>{item?.description}</small>
+                </li>
+              ))}
+            </ul>
+          </div>
+        );
+      })}
     </Layout>
   );
 };
