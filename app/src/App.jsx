@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
 import { RouterProvider } from "react-router-dom";
-import { queryFetchTaskItems, queryFetchTaskLists } from "./queries";
 import { AppContext } from "./context";
 import { appRouter } from "./router";
 import { usePersons, useTaskItems, useTaskLists } from "./hooks";

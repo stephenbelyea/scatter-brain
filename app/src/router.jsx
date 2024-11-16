@@ -7,7 +7,7 @@ export const appRouter = createBrowserRouter([
     element: <Dashboard />,
   },
   {
-    path: "person/:personId",
+    path: "person/:slug",
     element: <Person />,
   },
 ]);
