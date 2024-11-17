@@ -1,11 +1,13 @@
-import { useContext, useMemo } from "react";
+import { useCallback, useContext, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { AppContext } from "../context";
+import { useListEntries } from "./use-list-entries";
 
 export const usePersonLists = () => {
   const { slug } = useParams();
   const { persons, taskLists, taskItems, allCheckedItems, todayDate } =
     useContext(AppContext);
+  const { updateListEntry } = useListEntries();
 
   const person = useMemo(
     () => persons.find((per) => per.slug === slug),
@@ -35,9 +37,22 @@ export const usePersonLists = () => {
     [checkedItems, todayDate]
   );
 
+  const updateListEntryItem = useCallback(
+    async (itemId, listId) => {
+      await updateListEntry({
+        itemId,
+        listId,
+        personId: person?.id,
+        date: todayDate,
+      });
+    },
+    [person, todayDate, updateListEntry]
+  );
+
   return {
     checkedItems,
     todayCheckedItems,
+    updateListEntryItem,
     person,
     lists,
   };

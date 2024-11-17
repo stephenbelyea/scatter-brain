@@ -1,14 +1,11 @@
-import { useContext } from "react";
 import { Layout } from "../components";
 import { usePersonLists } from "../hooks";
-import { queryUpdateListEntry } from "../queries/update-list-entry";
 
 import "./person.css";
-import { AppContext } from "../context";
 
 export const Person = () => {
-  const { person, lists, todayCheckedItems } = usePersonLists();
-  const { todayDate } = useContext(AppContext);
+  const { person, lists, todayCheckedItems, updateListEntry } =
+    usePersonLists();
 
   const isItemInCheckedItems = (itemId, listId) =>
     todayCheckedItems.filter(
@@ -16,22 +13,7 @@ export const Person = () => {
     ).length !== 0;
 
   const onChangeItem = async (itemId, listId) => {
-    const result = await queryUpdateListEntry({
-      itemId,
-      listId,
-      personId: person.id,
-      date: todayDate,
-      points: 2,
-    });
-    // let updateCheckedItems = [];
-    // if (isItemInCheckedItems(itemId, listId)) {
-    //   updateCheckedItems = checkedItems.filter(
-    //     (item) => !(itemId === item.itemId && listId === item.listId)
-    //   );
-    // } else {
-    //   updateCheckedItems = [...checkedItems, { itemId, listId }];
-    // }
-    // setCheckedItems(updateCheckedItems);
+    await updateListEntry({ itemId, listId });
   };
 
   const onSubmitForm = (e) => {
