@@ -1,18 +1,28 @@
+import { useContext } from "react";
 import { Layout } from "../components";
 import { usePersonLists } from "../hooks";
+import { queryUpdateListEntry } from "../queries/update-list-entry";
 
 import "./person.css";
+import { AppContext } from "../context";
 
 export const Person = () => {
   const { person, lists, todayCheckedItems } = usePersonLists();
+  const { todayDate } = useContext(AppContext);
 
   const isItemInCheckedItems = (itemId, listId) =>
     todayCheckedItems.filter(
       (checked) => checked.itemId === itemId && checked.listId === listId
     ).length !== 0;
 
-  const onChangeItem = (itemId, listId) => {
-    console.log(itemId, listId);
+  const onChangeItem = async (itemId, listId) => {
+    const result = await queryUpdateListEntry({
+      itemId,
+      listId,
+      personId: person.id,
+      date: todayDate,
+      points: 2,
+    });
     // let updateCheckedItems = [];
     // if (isItemInCheckedItems(itemId, listId)) {
     //   updateCheckedItems = checkedItems.filter(
