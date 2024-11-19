@@ -13,9 +13,21 @@ const todayDate = new Date().toLocaleDateString("en-CA");
 
 export const App = () => {
   const { persons, loading: personsLoading } = usePersons();
-  const { taskItems, loading: taskItemsLoading } = useTaskItems();
-  const { taskLists, loading: taskListsLoading } = useTaskLists();
-  const { listEntries, loading: listEntriesLoading } = useListEntries();
+  const {
+    taskItems,
+
+    loading: taskItemsLoading,
+  } = useTaskItems();
+  const {
+    taskLists,
+
+    loading: taskListsLoading,
+  } = useTaskLists();
+  const {
+    listEntries,
+    updateListEntry,
+    loading: listEntriesLoading,
+  } = useListEntries();
 
   const allCheckedItems = useMemo(() => {
     const checked = [];
@@ -48,6 +60,7 @@ export const App = () => {
         taskItems,
         taskLists,
         listEntries,
+        updateListEntry,
         allCheckedItems,
         todayDate,
         loading,

@@ -1,13 +1,18 @@
 import { useCallback, useContext, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { AppContext } from "../context";
-import { useListEntries } from "./use-list-entries";
 
 export const usePersonLists = () => {
   const { slug } = useParams();
-  const { persons, taskLists, taskItems, allCheckedItems, todayDate } =
-    useContext(AppContext);
-  const { updateListEntry } = useListEntries();
+  const {
+    persons,
+    taskLists,
+    taskItems,
+    listEntries,
+    todayDate,
+    allCheckedItems,
+    updateListEntry,
+  } = useContext(AppContext);
 
   const person = useMemo(
     () => persons.find((per) => per.slug === slug),
@@ -37,22 +42,55 @@ export const usePersonLists = () => {
     [checkedItems, todayDate]
   );
 
-  const updateListEntryItem = useCallback(
+  const updateListItem = useCallback(
     async (itemId, listId) => {
-      await updateListEntry({
-        itemId,
-        listId,
-        personId: person?.id,
-        date: todayDate,
+      const itemPoints =
+        taskItems.find((item) => item.id === itemId)?.points || 1;
+      const existingEntry = listEntries.find(
+        (entry) =>
+          entry.taskListId === listId &&
+          entry.personId === person?.id &&
+          entry.date === todayDate
+      );
+
+      if (!existingEntry) {
+        return updateListEntry({
+          completed: [itemId],
+          taskListId: listId,
+          personId: person?.id,
+          date: todayDate,
+          points: itemPoints,
+        });
+      }
+
+      const isItemChecked = todayCheckedItems.includes((item) => item.itemId);
+      const completed = isItemChecked
+        ? existingEntry.completed.filter((comp) => comp !== itemId)
+        : [...existingEntry.completed, itemId];
+      const points = isItemChecked
+        ? existingEntry.points - itemPoints
+        : existingEntry.points + itemPoints;
+
+      return updateListEntry({
+        id: existingEntry.id,
+        completed,
+        points,
       });
     },
-    [person, todayDate, updateListEntry]
+    [
+      listEntries,
+      person,
+      todayDate,
+      taskItems,
+      updateListEntry,
+      todayCheckedItems,
+    ]
   );
 
   return {
     checkedItems,
     todayCheckedItems,
-    updateListEntryItem,
+    updateListItem,
     person,
     lists,
   };

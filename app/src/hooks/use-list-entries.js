@@ -1,5 +1,9 @@
 import { useCallback, useEffect, useState } from "react";
-import { queryFetchListEntries } from "../queries";
+import {
+  queryCreateListEntry,
+  queryFetchListEntries,
+  queryUpdateListEntry,
+} from "../queries";
 
 export const useListEntries = () => {
   const [listEntries, setListEntries] = useState([]);
@@ -12,16 +16,20 @@ export const useListEntries = () => {
     setLoading(false);
   }, []);
 
-  const updateListEntry = useCallback(async (entryItem) => {
-    setLoading(true);
-    const { itemId, listId, personId, date } = entryItem;
-    console.log({ itemId, listId, personId, date });
-    // check if list + person + date entry exists
-    // if yes, update
-    // if no, create
-    // refresh list entries
-    setLoading(false);
-  }, []);
+  const updateListEntry = useCallback(
+    async (listEntry) => {
+      setLoading(true);
+      if (listEntry.id) {
+        const { id, completed, points } = listEntry;
+        await queryUpdateListEntry(id, { completed, points });
+      } else {
+        await queryCreateListEntry(listEntry);
+      }
+      await fetchListEntries();
+      setLoading(false);
+    },
+    [fetchListEntries]
+  );
 
   useEffect(() => {
     if (listEntries.length === 0) {
@@ -29,5 +37,5 @@ export const useListEntries = () => {
     }
   });
 
-  return { listEntries, updateListEntry, loading };
+  return { listEntries, fetchListEntries, updateListEntry, loading };
 };

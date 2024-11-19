@@ -4,17 +4,12 @@ import { usePersonLists } from "../hooks";
 import "./person.css";
 
 export const Person = () => {
-  const { person, lists, todayCheckedItems, updateListEntry } =
-    usePersonLists();
+  const { person, lists, updateListItem, todayCheckedItems } = usePersonLists();
 
   const isItemInCheckedItems = (itemId, listId) =>
     todayCheckedItems.filter(
       (checked) => checked.itemId === itemId && checked.listId === listId
     ).length !== 0;
-
-  const onChangeItem = async (itemId, listId) => {
-    await updateListEntry({ itemId, listId });
-  };
 
   const onSubmitForm = (e) => {
     e.preventDefault();
@@ -41,7 +36,7 @@ export const Person = () => {
                           type="checkbox"
                           name={list.id}
                           value={item.id}
-                          onChange={() => onChangeItem(item.id, list.id)}
+                          onChange={() => updateListItem(item.id, list.id)}
                           checked={isChecked}
                         />
                         <span className="checkbox">

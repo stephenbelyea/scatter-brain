@@ -5,6 +5,7 @@ export const AppContext = createContext({
   taskItems: [],
   taskLists: [],
   listEntries: [],
+  updateListEntry: () => {},
   allCheckedItems: [],
   todayDate: new Date().toLocaleDateString("en-CA"),
   loading: false,
