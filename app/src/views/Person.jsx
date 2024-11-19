@@ -1,10 +1,11 @@
 import { Layout } from "../components";
-import { usePersonLists } from "../hooks";
+import { usePersonLists, usePersonStats } from "../hooks";
 
 import "./person.css";
 
 export const Person = () => {
   const { person, lists, updateListItem, todayCheckedItems } = usePersonLists();
+  const { totalPoints, todayPoints } = usePersonStats();
 
   const isItemInCheckedItems = (itemId, listId) =>
     todayCheckedItems.filter(
@@ -17,7 +18,19 @@ export const Person = () => {
 
   return (
     <Layout view="person">
-      <h1>{person?.name}</h1>
+      <header>
+        <h1>{person?.name}</h1>
+        <div className="points">
+          <div className="today">
+            <span className="number">{todayPoints}</span>
+            <span className="title">Today</span>
+          </div>
+          <div className="total">
+            <span className="number">{totalPoints}</span>
+            <span className="title">All Time</span>
+          </div>
+        </div>
+      </header>
       {lists.length > 0 && (
         <form onSubmit={onSubmitForm}>
           {lists.map((list) => {

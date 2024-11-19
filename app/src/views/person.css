@@ -65,3 +65,25 @@ h2,
 .view-person .item input[type="checkbox"]:active + .checkbox {
   transform: scale(1.015);
 }
+
+.view-person header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.view-person .points {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+  line-height: 1.25;
+}
+
+.view-person .points .number {
+  display: block;
+  font-weight: bold;
+  font-size: 2.25rem;
+}
