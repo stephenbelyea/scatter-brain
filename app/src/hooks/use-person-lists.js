@@ -63,7 +63,7 @@ export const usePersonLists = () => {
         });
       }
 
-      const isItemChecked = todayCheckedItems.includes((item) => item.itemId);
+      const isItemChecked = existingEntry.completed.includes(itemId);
       const completed = isItemChecked
         ? existingEntry.completed.filter((comp) => comp !== itemId)
         : [...existingEntry.completed, itemId];
@@ -77,14 +77,7 @@ export const usePersonLists = () => {
         points,
       });
     },
-    [
-      listEntries,
-      person,
-      todayDate,
-      taskItems,
-      updateListEntry,
-      todayCheckedItems,
-    ]
+    [listEntries, person, todayDate, taskItems, updateListEntry]
   );
 
   return {
