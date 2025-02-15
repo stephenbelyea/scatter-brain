@@ -18,23 +18,14 @@ export const App = () => {
     error: personsError,
   } = usePersons();
 
-  const {
-    taskItems,
-    loading: taskItemsLoading,
-    error: taskItemsError,
-  } = useTaskItems();
+  const { taskItems, loading: taskItemsLoading } = useTaskItems();
 
-  const {
-    taskLists,
-    loading: taskListsLoading,
-    error: taskListsError,
-  } = useTaskLists();
+  const { taskLists, loading: taskListsLoading } = useTaskLists();
 
   const {
     listEntries,
     updateListEntry,
     loading: listEntriesLoading,
-    error: listEntriesError,
   } = useListEntries();
 
   const allCheckedItems = useMemo(() => {
@@ -51,6 +42,11 @@ export const App = () => {
     });
     return checked;
   }, [listEntries]);
+
+  const activeTaskLists = useMemo(
+    () => taskLists.filter((list) => list.active),
+    [taskLists]
+  );
 
   const loading = useMemo(
     () =>
@@ -69,6 +65,7 @@ export const App = () => {
         persons,
         taskItems,
         taskLists,
+        activeTaskLists,
         listEntries,
         updateListEntry,
         allCheckedItems,

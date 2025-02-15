@@ -13,7 +13,6 @@ export const taskListType = defineType({
     defineField({
       name: 'active',
       type: 'boolean',
-      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'people',

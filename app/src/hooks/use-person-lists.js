@@ -1,4 +1,4 @@
-import { useCallback, useContext, useMemo } from "react";
+import { useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 import { AppContext } from "../context";
 
@@ -6,13 +6,14 @@ export const usePersonLists = () => {
   const { slug } = useParams();
   const {
     persons,
-    taskLists,
+    activeTaskLists,
     taskItems,
     listEntries,
     todayDate,
     allCheckedItems,
     updateListEntry,
   } = useContext(AppContext);
+  const [showLists, setShowLists] = useState(true);
 
   const person = useMemo(
     () => persons.find((per) => per.slug === slug),
@@ -21,7 +22,7 @@ export const usePersonLists = () => {
 
   const lists = useMemo(
     () =>
-      taskLists
+      activeTaskLists
         .filter((list) => list.people.includes(person?.id))
         .map((list) => ({
           ...list,
@@ -29,7 +30,7 @@ export const usePersonLists = () => {
             taskItems.find((task) => task.id === item)
           ),
         })),
-    [person, taskLists, taskItems]
+    [person, activeTaskLists, taskItems]
   );
 
   const checkedItems = useMemo(
@@ -41,6 +42,14 @@ export const usePersonLists = () => {
     () => checkedItems.filter((item) => item.date === todayDate),
     [checkedItems, todayDate]
   );
+
+  const todayAllItems = useMemo(() => {
+    const items = [];
+    lists.forEach((list) => {
+      items.push(...list.items);
+    });
+    return items;
+  }, [lists]);
 
   const updateListItem = useCallback(
     async (itemId, listId) => {
@@ -80,10 +89,25 @@ export const usePersonLists = () => {
     [listEntries, person, todayDate, taskItems, updateListEntry]
   );
 
+  // Force refresh the item lists on slug change
+  useEffect(() => {
+    if (slug) {
+      setShowLists(false);
+    }
+  }, [slug]);
+
+  useEffect(() => {
+    if (!showLists) {
+      setShowLists(true);
+    }
+  }, [showLists]);
+
   return {
     checkedItems,
     todayCheckedItems,
+    todayAllItems,
     updateListItem,
+    showLists,
     person,
     lists,
   };

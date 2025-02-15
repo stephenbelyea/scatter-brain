@@ -13,6 +13,7 @@ export const queryFetchTaskLists = async () => {
         timeframe: list.timeframe,
         people: list.people.map((person) => person._ref),
         taskItems: list.taskItems.map((item) => item._ref),
+        active: list.active === true,
       }));
     }
   } catch (error) {

@@ -1,69 +1,7 @@
-.view-person fieldset {
-  margin: 2rem 0;
-  border: none;
-  padding: 0;
-}
-
-h2,
-.view-person legend {
+h2 {
   font-size: 1.75rem;
   font-weight: bold;
   margin-bottom: 1rem;
-}
-
-.view-person .item {
-  position: relative;
-  margin: 0.75rem 0;
-}
-
-.view-person .item input[type="checkbox"] {
-  position: absolute;
-  z-index: -1;
-  opacity: 0;
-}
-
-.view-person .item .checkbox {
-  display: flex;
-  cursor: pointer;
-  padding: 0.5rem 1.5rem;
-  border: solid 0.1em rgba(255, 255, 255, 0.25);
-  background: rgba(0, 0, 0, 0.1);
-  border-radius: 0.25rem;
-  gap: 1rem;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.view-person .item .checkbox .icon {
-  font-weight: bold;
-  font-size: 2em;
-  flex: 0 0 2rem;
-  opacity: 0.05;
-}
-
-.view-person .item .checkbox .text {
-  font-size: 1.15em;
-  flex: 1 1 auto;
-}
-
-.view-person .item .checkbox:hover,
-.view-person .item input[type="checkbox"]:focus + .checkbox {
-  background: rgba(0, 0, 0, 0.15);
-  border-color: rgba(255, 255, 255, 0.65);
-}
-
-.view-person .item input[type="checkbox"]:checked + .checkbox {
-  background: rgba(11, 44, 11, 0.35) !important;
-  border-color: rgba(79, 212, 79, 0.75) !important;
-}
-
-.view-person .item input[type="checkbox"]:checked + .checkbox .icon {
-  opacity: 1;
-}
-
-.view-person .item .checkbox:active,
-.view-person .item input[type="checkbox"]:active + .checkbox {
-  transform: scale(1.015);
 }
 
 .view-person header {
@@ -78,7 +16,7 @@ h2,
   justify-content: flex-end;
   align-items: center;
   text-align: center;
-  gap: 1.5rem;
+  gap: 1.75rem;
   line-height: 1.25;
 }
 
@@ -86,4 +24,9 @@ h2,
   display: block;
   font-weight: bold;
   font-size: 2.25rem;
+}
+
+.view-person .points .number sup {
+  font-size: 0.45em;
+  font-weight: normal;
 }

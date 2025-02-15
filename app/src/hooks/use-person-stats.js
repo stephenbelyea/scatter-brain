@@ -5,14 +5,17 @@ import { useParams } from "react-router-dom";
 const getPersonPoints = (entries, today) => {
   let totalPoints = 0;
   let todayPoints = 0;
+
   entries.forEach((entry) => {
     if (entry.date === today) {
       todayPoints += entry.points;
     }
     totalPoints += entry.points;
   });
+
   if (!totalPoints) totalPoints = 0;
   if (!todayPoints) todayPoints = 0;
+
   return { totalPoints, todayPoints };
 };
 
