@@ -61,10 +61,7 @@ export const App = () => {
     [personsLoading, taskItemsLoading, taskListsLoading, listEntriesLoading]
   );
 
-  const error = useMemo(
-    () => personsError || taskItemsError || taskListsError || listEntriesError,
-    [personsError, taskItemsError, taskListsError, listEntriesError]
-  );
+  const error = useMemo(() => personsError, [personsError]);
 
   return (
     <AppContext.Provider

@@ -11,6 +11,11 @@ export const taskListType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'active',
+      type: 'boolean',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: 'people',
       type: 'array',
       of: [{type: 'reference', to: [{type: 'person'}]}],
@@ -47,7 +52,6 @@ export const taskListType = defineType({
       name: 'taskItems',
       type: 'array',
       of: [{type: 'reference', to: [{type: 'taskItem'}]}],
-      validation: (rule) => rule.required(),
     }),
   ],
 })
