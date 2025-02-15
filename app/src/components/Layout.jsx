@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { AppContext } from "../context";
 import { LoadingState } from "./loading-state";
-import { Logo } from "./Logo";
+import { Logo } from "./logo";
 
 import "./layout.css";
 import { ErrorState } from "./error-state";
