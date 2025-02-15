@@ -1,13 +1,14 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { AppContext } from "../context";
-import { Loading } from "./Loading";
+import { LoadingState } from "./loading-state";
 import { Logo } from "./Logo";
 
 import "./layout.css";
+import { ErrorState } from "./error-state";
 
 export const Layout = ({ view = "", children }) => {
-  const { persons, loading } = useContext(AppContext);
+  const { persons, loading, error } = useContext(AppContext);
 
   return (
     <div className={`app layout view-${view}`}>
@@ -26,7 +27,8 @@ export const Layout = ({ view = "", children }) => {
           Made by <a href="https://belwerks.com">Belwerks</a>
         </p>
       </footer>
-      <Loading loading={loading} />
+      <LoadingState loading={loading} />
+      <ErrorState error={error} />
     </div>
   );
 };

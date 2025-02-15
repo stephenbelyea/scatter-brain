@@ -25,3 +25,34 @@ a:hover,
 a:focus {
   color: var(--link-hocus-colour);
 }
+
+/* Overlay state */
+
+.state {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: -1;
+  opacity: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.state .inner {
+  padding: 2rem;
+  text-align: center;
+}
+
+.state .inner p {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.state[data-active="true"] {
+  z-index: 5;
+  opacity: 1;
+}

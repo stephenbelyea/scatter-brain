@@ -8,10 +8,12 @@ import {
 export const useListEntries = () => {
   const [listEntries, setListEntries] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const fetchListEntries = useCallback(async () => {
     setLoading(true);
     const response = await queryFetchListEntries();
+    setError(response.length === 0);
     setListEntries(response);
     setLoading(false);
   }, []);
@@ -32,10 +34,10 @@ export const useListEntries = () => {
   );
 
   useEffect(() => {
-    if (listEntries.length === 0) {
+    if (!loading && !error && listEntries.length === 0) {
       fetchListEntries();
     }
-  });
+  }, [loading, error, listEntries, fetchListEntries]);
 
-  return { listEntries, fetchListEntries, updateListEntry, loading };
+  return { listEntries, fetchListEntries, updateListEntry, loading, error };
 };

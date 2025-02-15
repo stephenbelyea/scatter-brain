@@ -12,21 +12,29 @@ import {
 const todayDate = new Date().toLocaleDateString("en-CA");
 
 export const App = () => {
-  const { persons, loading: personsLoading } = usePersons();
+  const {
+    persons,
+    loading: personsLoading,
+    error: personsError,
+  } = usePersons();
+
   const {
     taskItems,
-
     loading: taskItemsLoading,
+    error: taskItemsError,
   } = useTaskItems();
+
   const {
     taskLists,
-
     loading: taskListsLoading,
+    error: taskListsError,
   } = useTaskLists();
+
   const {
     listEntries,
     updateListEntry,
     loading: listEntriesLoading,
+    error: listEntriesError,
   } = useListEntries();
 
   const allCheckedItems = useMemo(() => {
@@ -53,6 +61,11 @@ export const App = () => {
     [personsLoading, taskItemsLoading, taskListsLoading, listEntriesLoading]
   );
 
+  const error = useMemo(
+    () => personsError || taskItemsError || taskListsError || listEntriesError,
+    [personsError, taskItemsError, taskListsError, listEntriesError]
+  );
+
   return (
     <AppContext.Provider
       value={{
@@ -64,6 +77,7 @@ export const App = () => {
         allCheckedItems,
         todayDate,
         loading,
+        error,
       }}
     >
       <RouterProvider router={appRouter} />

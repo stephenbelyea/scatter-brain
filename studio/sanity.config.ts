@@ -7,7 +7,7 @@ export default defineConfig({
   name: 'default',
   title: 'Scatter Brain',
 
-  projectId: 'ubscmclg',
+  projectId: 'josl05g9',
   dataset: 'production',
 
   plugins: [structureTool(), visionTool()],
