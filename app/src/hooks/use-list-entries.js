@@ -4,6 +4,7 @@ import {
   queryFetchListEntries,
   queryUpdateListEntry,
 } from "../queries";
+import { getValidAuth } from "../utils";
 
 export const useListEntries = () => {
   const [listEntries, setListEntries] = useState([]);
@@ -20,15 +21,17 @@ export const useListEntries = () => {
 
   const updateListEntry = useCallback(
     async (listEntry) => {
-      setLoading(true);
-      if (listEntry.id) {
-        const { id, completed, points } = listEntry;
-        await queryUpdateListEntry(id, { completed, points });
-      } else {
-        await queryCreateListEntry(listEntry);
+      if (getValidAuth()) {
+        setLoading(true);
+        if (listEntry.id) {
+          const { id, completed, points } = listEntry;
+          await queryUpdateListEntry(id, { completed, points });
+        } else {
+          await queryCreateListEntry(listEntry);
+        }
+        await fetchListEntries();
+        setLoading(false);
       }
-      await fetchListEntries();
-      setLoading(false);
     },
     [fetchListEntries]
   );
@@ -39,5 +42,11 @@ export const useListEntries = () => {
     }
   }, [loading, error, listEntries, fetchListEntries]);
 
-  return { listEntries, fetchListEntries, updateListEntry, loading, error };
+  return {
+    listEntries,
+    fetchListEntries,
+    updateListEntry,
+    loading,
+    error,
+  };
 };
