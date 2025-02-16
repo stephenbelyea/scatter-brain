@@ -1,9 +1,11 @@
+import { useEffect, useState } from "react";
 import { usePersonLists } from "../hooks";
 import "./person-lists.css";
 
 export const PersonLists = () => {
   const { lists, showLists, updateListItem, todayCheckedItems } =
     usePersonLists();
+  const [openLists, setOpenLists] = useState([]);
 
   const isItemInCheckedItems = (itemId, listId) =>
     todayCheckedItems.filter(
@@ -14,6 +16,21 @@ export const PersonLists = () => {
     e.preventDefault();
   };
 
+  const onToggleOpenList = (listId) => {
+    if (openLists.includes(listId)) {
+      setOpenLists(openLists.filter((id) => id !== listId));
+    } else {
+      setOpenLists([...openLists, listId]);
+    }
+  };
+
+  useEffect(() => {
+    if (lists && lists.length > 0) {
+      const listsToOpen = lists.map((list) => list.id);
+      setOpenLists(listsToOpen);
+    }
+  }, [lists]);
+
   return (
     <div className="person-lists">
       {showLists && lists.length > 0 && (
@@ -23,6 +40,7 @@ export const PersonLists = () => {
             const checkedItems = list.items.filter((item) =>
               isItemInCheckedItems(item.id, list.id)
             );
+            const isListOpen = openLists.includes(list.id);
             const isItemsRemaining = checkedItems.length < list.items.length;
             const progressMessage = isItemsRemaining ? (
               `${checkedItems.length} of ${list.items.length}`
@@ -33,15 +51,20 @@ export const PersonLists = () => {
             return (
               <fieldset className="list" key={list.id}>
                 <legend>
-                  <span>
-                    <span>{list.name}</span>
-                  </span>
-                  <small>{progressMessage}</small>
+                  <span className="list-name">{list.name}</span>
+                  <small className="list-progress">{progressMessage}</small>
+                  <button
+                    className="list-toggle"
+                    onClick={() => onToggleOpenList(list.id)}
+                    aria-label={isListOpen ? "hide list" : "open list"}
+                  >
+                    {isListOpen ? "-" : "+"}
+                  </button>
                 </legend>
                 {!isItemsRemaining && (
                   <p>You&apos;ve completed this list for today. Great job!</p>
                 )}
-                {isItemsRemaining &&
+                {isListOpen &&
                   list.items?.map((item) => {
                     if (!item) return null;
                     const isChecked = checkedItems.find(

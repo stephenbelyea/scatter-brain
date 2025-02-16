@@ -8,11 +8,37 @@
   font-size: 1.75rem;
   font-weight: bold;
   margin-bottom: 1rem;
+  line-height: 1.25;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   width: 100%;
   gap: 1rem;
+}
+
+.person-lists legend .list-progress,
+.person-lists legend .list-toggle {
+  flex: 0 0 auto;
+}
+
+.person-lists legend .list-toggle {
+  background: transparent;
+  padding: 0.05em 0.35em 0.25em;
+  color: white;
+  border: solid 0.1em rgba(255, 255, 255, 0.15);
+  line-height: 1.15;
+  border-radius: 0.5em;
+  min-width: 1.65em;
+  text-align: center;
+}
+
+.person-lists legend .list-toggle:hover,
+.person-lists legend .list-toggle:focus {
+  border: solid 0.1em rgba(255, 255, 255, 1);
+}
+
+.person-lists legend .list-progress {
+  margin-left: auto;
 }
 
 .person-lists .item {
