@@ -1,1 +1,1 @@
-export { getValidAuth } from "./get-valid-auth";
+export { getValidAuth, getSearchParams } from "./get-valid-auth";
