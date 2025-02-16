@@ -1,11 +1,9 @@
 import { createClient } from "@sanity/client";
 
-const { VITE_REACT_SANITY_TOKEN, VITE_REACT_SANITY_PROJECT } = import.meta.env;
-
 export const client = createClient({
-  token: VITE_REACT_SANITY_TOKEN,
-  projectId: VITE_REACT_SANITY_PROJECT,
-  dataset: "production",
-  apiVersion: "vX",
+  token: import.meta.env.VITE_REACT_SANITY_API_TOKEN,
+  projectId: import.meta.env.VITE_REACT_SANITY_PROJECT_ID,
+  dataset: import.meta.env.VITE_REACT_SANITY_PROJECT_DATASET,
+  apiVersion: "v1",
   useCdn: false,
 });

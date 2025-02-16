@@ -6,13 +6,16 @@ export const getSearchParams = () => {
 };
 
 export const getValidAuth = () => {
-  const { VITE_REACT_AUTH_KEY, VITE_REACT_AUTH_TOKEN } = import.meta.env;
   const { params } = getSearchParams();
 
-  if (params.get(VITE_REACT_AUTH_KEY) !== VITE_REACT_AUTH_TOKEN) {
-    window.alert("Your updates will not be saved!");
-    return false;
+  if (
+    params.get(import.meta.env.VITE_REACT_PARAM_AUTH_KEY) &&
+    params.get(import.meta.env.VITE_REACT_PARAM_AUTH_KEY) ===
+      import.meta.env.VITE_REACT_PARAM_AUTH_TOKEN
+  ) {
+    return true;
   }
 
-  return true;
+  window.alert("Your updates will not be saved!");
+  return false;
 };

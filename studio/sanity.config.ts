@@ -7,8 +7,8 @@ export default defineConfig({
   name: 'default',
   title: 'Scatter Brain',
 
-  projectId: 'josl05g9',
-  dataset: 'production',
+  projectId: process.env.SANITY_STUDIO_PROJECT_ID as unknown as string,
+  dataset: process.env.SANITY_STUDIO_PROJECT_DATASET as unknown as string,
 
   plugins: [structureTool(), visionTool()],
 
