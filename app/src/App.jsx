@@ -8,8 +8,11 @@ import {
   useTaskItems,
   useTaskLists,
 } from "./hooks";
+import { TODAY } from "./utils";
+import { getTodayRepeats } from "./utils/get-today-repeats";
 
-const todayDate = new Date().toLocaleDateString("en-CA");
+const todayDate = TODAY.toLocaleDateString("en-CA");
+const todayRepeats = getTodayRepeats();
 
 export const App = () => {
   const {
@@ -44,7 +47,12 @@ export const App = () => {
   }, [listEntries]);
 
   const activeTaskLists = useMemo(
-    () => taskLists.filter((list) => list.active),
+    () =>
+      taskLists
+        .filter(({ active }) => active)
+        .filter(({ repeats }) =>
+          todayRepeats.find(({ key }) => key === repeats)
+        ),
     [taskLists]
   );
 

@@ -37,16 +37,20 @@ export const PersonLists = () => {
         <form onSubmit={onSubmitForm}>
           {lists.map((list) => {
             if (!list) return null;
-            const checkedItems = list.items.filter((item) =>
+            const listItems = list.items || [];
+            const checkedItems = listItems.filter((item) =>
               isItemInCheckedItems(item.id, list.id)
             );
             const isListOpen = openLists.includes(list.id);
-            const isItemsRemaining = checkedItems.length < list.items.length;
-            const progressMessage = isItemsRemaining ? (
-              `${checkedItems.length} of ${list.items.length}`
-            ) : (
-              <span style={{ color: "rgb(79, 212, 79)" }}>Done!</span>
-            );
+            const isItemsRemaining = checkedItems.length < listItems.length;
+            const isItemsInList = listItems.length > 0;
+            const progressMessage = isItemsInList ? (
+              isItemsRemaining ? (
+                `${checkedItems.length} of ${listItems.length}`
+              ) : (
+                <span style={{ color: "rgb(79, 212, 79)" }}>Done!</span>
+              )
+            ) : null;
 
             return (
               <fieldset className="list" key={list.id}>
@@ -62,7 +66,11 @@ export const PersonLists = () => {
                   </button>
                 </legend>
                 {!isItemsRemaining && (
-                  <p>You&apos;ve completed this list for today. Great job!</p>
+                  <p>
+                    {isItemsInList
+                      ? `You've completed this list for today. Great job!`
+                      : `This list doesn't have any items yet.`}
+                  </p>
                 )}
                 {isListOpen &&
                   list.items?.map((item) => {

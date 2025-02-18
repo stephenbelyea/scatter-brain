@@ -11,8 +11,8 @@ export const queryFetchTaskLists = async () => {
         name: list.name,
         repeats: list.repeats,
         timeframe: list.timeframe,
-        people: list.people.map((person) => person._ref),
-        taskItems: list.taskItems.map((item) => item._ref),
+        people: list.people?.map((person) => person._ref) || [],
+        taskItems: list.taskItems?.map((item) => item._ref) || [],
         active: list.active === true,
       }));
     }

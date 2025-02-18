@@ -7,6 +7,6 @@ export const AppContext = createContext({
   listEntries: [],
   updateListEntry: () => {},
   allCheckedItems: [],
-  todayDate: new Date().toLocaleDateString("en-CA"),
+  todayDate: undefined,
   loading: false,
 });
