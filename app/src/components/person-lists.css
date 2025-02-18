@@ -20,6 +20,16 @@
   gap: 1rem;
 }
 
+.person-lists legend .list-name small {
+  font-weight: normal;
+  opacity: 0.85;
+}
+
+.person-lists legend .list-name small:before {
+  margin: 0 0.35em 0 0.25em;
+  content: "-";
+}
+
 .person-lists legend .list-progress,
 .person-lists legend .list-toggle {
   flex: 0 0 auto;
@@ -45,6 +55,14 @@
   margin-left: auto;
 }
 
+.person-lists .items-in-list {
+  font-size: 0.875em;
+  font-style: italic;
+  margin-top: -0.35em;
+  margin-bottom: 0.25em;
+  opacity: 0.85;
+}
+
 .person-lists .item {
   position: relative;
   margin: 0.5rem 0;
@@ -63,11 +81,11 @@
 .person-lists .item .checkbox {
   display: flex;
   cursor: pointer;
-  padding: 0.25rem 1rem 0.25rem 1.25rem;
+  padding: 0.25rem 1.5rem 0.25rem 1.25rem;
   border: solid 0.1em rgba(255, 255, 255, 0.25);
   background: rgba(0, 0, 0, 0.1);
   border-radius: 0.25rem;
-  gap: 1rem;
+  gap: 1.25rem;
   justify-content: flex-start;
   align-items: center;
 }
@@ -81,7 +99,18 @@
 
 .person-lists .item .checkbox .text {
   font-size: 1em;
-  flex: 1 1 auto;
+}
+
+.person-lists .item .checkbox .text > * {
+  display: block;
+}
+
+.person-lists .item .checkbox .text small {
+  margin: 0.25em 0 0.675em;
+  font-size: 0.65em;
+  line-height: 1.35;
+  font-style: italic;
+  opacity: 0.85;
 }
 
 .person-lists .item .checkbox:hover,

@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { usePersonLists } from "../hooks";
+import { getListWithinTimeframe, TIME_TO_FRAME } from "../utils";
+
 import "./person-lists.css";
 
 export const PersonLists = () => {
@@ -26,7 +28,9 @@ export const PersonLists = () => {
 
   useEffect(() => {
     if (lists && lists.length > 0) {
-      const listsToOpen = lists.map((list) => list.id);
+      const listsToOpen = lists
+        .filter((list) => getListWithinTimeframe(list) === TIME_TO_FRAME.WITHIN)
+        .map((list) => list.id);
       setOpenLists(listsToOpen);
     }
   }, [lists]);
@@ -52,10 +56,16 @@ export const PersonLists = () => {
               )
             ) : null;
 
+            const isAfterTime =
+              getListWithinTimeframe(list) === TIME_TO_FRAME.AFTER;
+
             return (
               <fieldset className="list" key={list.id}>
                 <legend>
-                  <span className="list-name">{list.name}</span>
+                  <span className="list-name">
+                    <span>{list.name} </span>
+                    {isAfterTime && <small>Past</small>}
+                  </span>
                   <small className="list-progress">{progressMessage}</small>
                   <button
                     className="list-toggle"
@@ -66,7 +76,7 @@ export const PersonLists = () => {
                   </button>
                 </legend>
                 {!isItemsRemaining && (
-                  <p>
+                  <p className="items-in-list">
                     {isItemsInList
                       ? `You've completed this list for today. Great job!`
                       : `This list doesn't have any items yet.`}
@@ -92,7 +102,12 @@ export const PersonLists = () => {
                           />
                           <span className="checkbox">
                             <span className="icon">&#10003;</span>
-                            <span className="text">{item.title}</span>
+                            <span className="text">
+                              <span>{item.title}</span>
+                              {item.description && (
+                                <small>{item.description}</small>
+                              )}
+                            </span>
                           </span>
                         </label>
                       </div>
