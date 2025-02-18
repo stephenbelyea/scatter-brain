@@ -1,9 +1,9 @@
 .person-lists {
-  margin-top: 2.5rem;
+  margin-top: 2rem;
 }
 
 .person-lists fieldset {
-  margin: 1rem 0;
+  margin: 1.5rem 0;
   border: none;
   padding: 0;
 }
@@ -21,7 +21,7 @@
 }
 
 .person-lists legend .list-name {
-  color: var(--heading-colour);
+  color: var(--logo-colour);
 }
 
 .person-lists legend .list-name small {

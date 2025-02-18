@@ -6,9 +6,9 @@
   --checked-bg-colour: rgba(11, 44, 11, 0.5);
   --checked-border-colour: rgba(79, 212, 79, 0.85);
   --text-colour: #fafefff1;
-  --heading-colour: #e0eefc;
-  --logo-colour: #babffc;
-  --link-colour: #83c1fa;
+  --heading-colour: #cde3f9;
+  --logo-colour: #c5caff;
+  --link-colour: #67bdff;
   --link-hocus-colour: var(--heading-colour);
   --success-colour: rgba(125, 250, 0, 0.925);
   --error-colour: tomato;
@@ -32,12 +32,12 @@ body {
 
 h1 {
   font-size: 3rem;
-}
-
-h1,
-h2 {
   color: var(--heading-colour);
   text-shadow: 0.035em 0.035em 0.025em var(--bg-colour-overlay-dark);
+}
+
+h2 {
+  color: var(--heading-colour);
 }
 
 a {
@@ -84,6 +84,6 @@ a:focus {
 }
 
 .state[data-active="true"] {
-  z-index: 5;
+  z-index: 15;
   opacity: 1;
 }

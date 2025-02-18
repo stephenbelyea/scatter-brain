@@ -2,12 +2,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0.1rem 1.5rem 0.75rem;
   gap: 2rem;
   position: sticky;
   top: 0;
-  left: 0;
   z-index: 10;
   background: var(--bg-colour);
+  border-bottom: solid 0.1rem var(--bg-colour-overlay);
+  box-shadow: 0 0.15rem 0.25rem -0.15rem var(--bg-colour-overlay-light);
+  width: calc(100% + 3rem);
+  margin-left: -1.5rem;
 }
 
 .person-stats .points {
@@ -23,12 +27,14 @@
   display: block;
   font-weight: bold;
   font-size: 1.75rem;
+  color: var(--logo-colour);
 }
 
 .person-stats .points sup {
   font-size: 0.45em;
   font-weight: normal;
   margin-left: 0.15em;
+  color: var(--text-colour);
 }
 
 .person-stats .points .to-dos sup {
