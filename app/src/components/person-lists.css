@@ -1,13 +1,17 @@
+.person-lists {
+  margin-top: 2.5rem;
+}
+
 .person-lists fieldset {
-  margin: 2rem 0;
+  margin: 1rem 0;
   border: none;
   padding: 0;
 }
 
 .person-lists legend {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   font-weight: bold;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   line-height: 1.25;
   display: flex;
   align-items: center;
@@ -43,7 +47,11 @@
 
 .person-lists .item {
   position: relative;
-  margin: 0.75rem 0;
+  margin: 0.5rem 0;
+}
+
+.person-lists .item:last-child {
+  margin-bottom: 1.25rem;
 }
 
 .person-lists .item input[type="checkbox"] {

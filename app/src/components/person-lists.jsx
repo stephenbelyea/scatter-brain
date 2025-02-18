@@ -38,8 +38,8 @@ export const PersonLists = () => {
           {lists.map((list) => {
             if (!list) return null;
             const listItems = list.items || [];
-            const checkedItems = listItems.filter((item) =>
-              isItemInCheckedItems(item.id, list.id)
+            const checkedItems = listItems.filter(
+              (item) => item && isItemInCheckedItems(item.id, list.id)
             );
             const isListOpen = openLists.includes(list.id);
             const isItemsRemaining = checkedItems.length < listItems.length;

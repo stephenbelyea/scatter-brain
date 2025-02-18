@@ -1,0 +1,42 @@
+.person-stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.person-stats h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.person-stats .points {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: center;
+  gap: 1.75rem;
+  line-height: 1.25;
+}
+
+.person-stats .points .number {
+  display: block;
+  font-weight: bold;
+  font-size: 1.75rem;
+}
+
+.person-stats .points sup {
+  font-size: 0.45em;
+  font-weight: normal;
+  margin-left: 0.15em;
+}
+
+.person-stats .points .to-dos sup {
+  margin: 0 -0.275em;
+}
+
+.person-stats .points .title {
+  display: block;
+  font-size: 0.915rem;
+  margin-top: -0.15em;
+}

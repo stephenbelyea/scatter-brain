@@ -8,19 +8,15 @@
   gap: 1rem;
 }
 
-.layout > main,
-.layout > nav,
-.layout > footer {
-  padding: 1rem 2rem;
-}
-
 .layout > nav,
 .layout > footer {
   flex: 0 0 auto;
+  padding: 1rem 1.5rem 0.75rem;
 }
 
 .layout > main {
   flex: 1 1 auto;
+  padding: 0 1.5rem;
 }
 
 .layout > nav {

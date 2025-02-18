@@ -36,3 +36,8 @@ export const getTodayRepeats = () => {
   );
   return todayRepeats;
 };
+
+const todayRepeats = getTodayRepeats();
+
+export const getIsListToday = (list) =>
+  todayRepeats.find((repeat) => repeat.key === list.repeats);
