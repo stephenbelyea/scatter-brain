@@ -52,7 +52,7 @@ export const PersonLists = () => {
               isItemsRemaining ? (
                 `${checkedItems.length} of ${listItems.length}`
               ) : (
-                <span style={{ color: "rgb(79, 212, 79)" }}>Done!</span>
+                <span className="success">Done!</span>
               )
             ) : null;
 

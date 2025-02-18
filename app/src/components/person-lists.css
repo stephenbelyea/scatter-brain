@@ -20,6 +20,10 @@
   gap: 1rem;
 }
 
+.person-lists legend .list-name {
+  color: var(--heading-colour);
+}
+
 .person-lists legend .list-name small {
   font-weight: normal;
   opacity: 0.85;
@@ -39,16 +43,18 @@
   background: transparent;
   padding: 0.05em 0.35em 0.25em;
   color: white;
-  border: solid 0.1em rgba(255, 255, 255, 0.15);
+  border: solid 0.1em var(--border-colour-inactive);
   line-height: 1.15;
   border-radius: 0.5em;
   min-width: 1.65em;
   text-align: center;
+  cursor: pointer;
 }
 
 .person-lists legend .list-toggle:hover,
 .person-lists legend .list-toggle:focus {
-  border: solid 0.1em rgba(255, 255, 255, 1);
+  border: solid 0.1em var(--border-colour-active);
+  background: var(--bg-colour-overlay);
 }
 
 .person-lists legend .list-progress {
@@ -81,13 +87,13 @@
 .person-lists .item .checkbox {
   display: flex;
   cursor: pointer;
-  padding: 0.25rem 1.5rem 0.25rem 1.25rem;
-  border: solid 0.1em rgba(255, 255, 255, 0.25);
-  background: rgba(0, 0, 0, 0.1);
-  border-radius: 0.25rem;
-  gap: 1.25rem;
+  padding: 0.25rem 1.5rem 0.25rem;
+  border: solid 0.1em var(--border-colour-inactive);
+  background: var(--bg-colour-overlay-light);
+  border-radius: 0.75rem;
   justify-content: flex-start;
   align-items: center;
+  gap: 1.75rem;
 }
 
 .person-lists .item .checkbox .icon {
@@ -105,8 +111,12 @@
   display: block;
 }
 
-.person-lists .item .checkbox .text small {
-  margin: 0.25em 0 0.675em;
+.person-lists .item .checkbox .text > span {
+  font-weight: 500;
+}
+
+.person-lists .item .checkbox .text > small {
+  margin: 0.25em 0 0.75em;
   font-size: 0.65em;
   line-height: 1.35;
   font-style: italic;
@@ -115,13 +125,13 @@
 
 .person-lists .item .checkbox:hover,
 .person-lists .item input[type="checkbox"]:focus + .checkbox {
-  background: rgba(0, 0, 0, 0.15);
-  border-color: rgba(255, 255, 255, 0.65);
+  background: var(--bg-colour-overlay);
+  border-color: var(--border-colour-active);
 }
 
 .person-lists .item input[type="checkbox"]:checked + .checkbox {
-  background: rgba(11, 44, 11, 0.35) !important;
-  border-color: rgba(79, 212, 79, 0.75) !important;
+  background: var(--checked-bg-colour) !important;
+  border-color: var(--checked-border-colour) !important;
 }
 
 .person-lists .item input[type="checkbox"]:checked + .checkbox .icon {

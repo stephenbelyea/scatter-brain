@@ -1,20 +1,43 @@
 :root {
-  --bg-colour: #242424;
-  --text-colour: #fdf7f7f1;
-  --link-colour: #ffaeae;
-  --link-hocus-colour: #fff;
+  --bg-colour: #1d1d1f;
+  --bg-colour-overlay: rgba(0, 0, 0, 0.25);
+  --bg-colour-overlay-dark: rgba(0, 0, 0, 0.65);
+  --bg-colour-overlay-light: rgba(0, 0, 0, 0.1);
+  --checked-bg-colour: rgba(11, 44, 11, 0.5);
+  --checked-border-colour: rgba(79, 212, 79, 0.85);
+  --text-colour: #fafefff1;
+  --heading-colour: #e0eefc;
+  --logo-colour: #babffc;
+  --link-colour: #83c1fa;
+  --link-hocus-colour: var(--heading-colour);
+  --success-colour: rgba(125, 250, 0, 0.925);
+  --error-colour: tomato;
 
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+  --border-colour-inactive: rgba(255, 255, 255, 0.25);
+  --border-colour-active: rgba(255, 255, 255, 0.75);
+
+  font-family: "Atkinson Hyperlegible Next", serif;
+  font-optical-sizing: auto;
   font-weight: 400;
-
+  font-style: normal;
+  line-height: 1.65;
   color: var(--text-colour);
   background-color: var(--bg-colour);
 }
 
 body {
   min-height: 100vh;
-  font-size: 1.15rem;
+  font-size: 1.35rem;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h1,
+h2 {
+  color: var(--heading-colour);
+  text-shadow: 0.035em 0.035em 0.025em var(--bg-colour-overlay-dark);
 }
 
 a {
@@ -24,6 +47,14 @@ a {
 a:hover,
 a:focus {
   color: var(--link-hocus-colour);
+}
+
+.error {
+  color: var(--error-colour);
+}
+
+.success {
+  color: var(--success-colour);
 }
 
 /* Overlay state */
@@ -39,7 +70,7 @@ a:focus {
   align-items: center;
   z-index: -1;
   opacity: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: var(--bg-colour-overlay-dark);
 }
 
 .state .inner {

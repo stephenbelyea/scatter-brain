@@ -3,11 +3,11 @@
   justify-content: space-between;
   align-items: center;
   gap: 2rem;
-}
-
-.person-stats h1 {
-  font-size: 2.5rem;
-  font-weight: bold;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  background: var(--bg-colour);
 }
 
 .person-stats .points {
