@@ -27,13 +27,12 @@ jobs:
         run: |
           npm install 
           npm run prod
-          cat .env
         env:
-          VITE_REACT_SANITY_API_TOKEN: ${{ secrets.VITE_REACT_SANITY_API_TOKEN }}
-          VITE_REACT_SANITY_PROJECT_ID: ${{ secrets.VITE_REACT_SANITY_PROJECT_ID }}
-          VITE_REACT_SANITY_PROJECT_DATASET: ${{ secrets.VITE_REACT_SANITY_PROJECT_DATASET }}
-          VITE_REACT_PARAM_AUTH_KEY: ${{ secrets.VITE_REACT_PARAM_AUTH_KEY }}
-          VITE_REACT_PARAM_AUTH_TOKEN: ${{ secrets.VITE_REACT_PARAM_AUTH_TOKEN }}
+          VITE_REACT_SANITY_API_TOKEN: ${{ vars.VITE_REACT_SANITY_API_TOKEN }}
+          VITE_REACT_SANITY_PROJECT_ID: ${{ vars.VITE_REACT_SANITY_PROJECT_ID }}
+          VITE_REACT_SANITY_PROJECT_DATASET: ${{ vars.VITE_REACT_SANITY_PROJECT_DATASET }}
+          VITE_REACT_PARAM_AUTH_KEY: ${{ vars.VITE_REACT_PARAM_AUTH_KEY }}
+          VITE_REACT_PARAM_AUTH_TOKEN: ${{ vars.VITE_REACT_PARAM_AUTH_TOKEN }}
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
