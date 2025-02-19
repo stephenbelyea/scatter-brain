@@ -1,0 +1,54 @@
+.layout {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 1rem;
+}
+
+.layout > nav,
+.layout > footer {
+  flex: 0 0 auto;
+  padding: 1rem 1.5rem 0.75rem;
+}
+
+.layout > main {
+  flex: 1 1 auto;
+  padding: 0 1.5rem;
+}
+
+.layout > nav {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.layout > nav .logo:after {
+  content: "|";
+  opacity: 0.25;
+  margin-left: 1.25rem;
+  padding: 0 0.5rem;
+}
+
+.layout > nav a {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.layout > nav a:hover,
+.layout > nav a:focus,
+.layout > nav a[aria-current="page"] {
+  text-decoration: underline;
+}
+
+.layout > nav a[aria-current="page"] {
+  color: var(--link-hocus-colour);
+}
+
+.layout > footer {
+  text-align: center;
+  font-size: 1rem;
+}

@@ -1,0 +1,134 @@
+.person-lists {
+  margin-top: 2.5rem;
+}
+
+.person-lists fieldset {
+  margin: 1rem 0;
+  border: none;
+  padding: 0;
+}
+
+.person-lists legend {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  line-height: 1.25;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  gap: 1rem;
+}
+
+.person-lists legend .list-name small {
+  font-weight: normal;
+  opacity: 0.85;
+}
+
+.person-lists legend .list-name small:before {
+  margin: 0 0.35em 0 0.25em;
+  content: "-";
+}
+
+.person-lists legend .list-progress,
+.person-lists legend .list-toggle {
+  flex: 0 0 auto;
+}
+
+.person-lists legend .list-toggle {
+  background: transparent;
+  padding: 0.05em 0.35em 0.25em;
+  color: white;
+  border: solid 0.1em rgba(255, 255, 255, 0.15);
+  line-height: 1.15;
+  border-radius: 0.5em;
+  min-width: 1.65em;
+  text-align: center;
+}
+
+.person-lists legend .list-toggle:hover,
+.person-lists legend .list-toggle:focus {
+  border: solid 0.1em rgba(255, 255, 255, 1);
+}
+
+.person-lists legend .list-progress {
+  margin-left: auto;
+}
+
+.person-lists .items-in-list {
+  font-size: 0.875em;
+  font-style: italic;
+  margin-top: -0.35em;
+  margin-bottom: 0.25em;
+  opacity: 0.85;
+}
+
+.person-lists .item {
+  position: relative;
+  margin: 0.5rem 0;
+}
+
+.person-lists .item:last-child {
+  margin-bottom: 1.25rem;
+}
+
+.person-lists .item input[type="checkbox"] {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.person-lists .item .checkbox {
+  display: flex;
+  cursor: pointer;
+  padding: 0.25rem 1.5rem 0.25rem 1.25rem;
+  border: solid 0.1em rgba(255, 255, 255, 0.25);
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 0.25rem;
+  gap: 1.25rem;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.person-lists .item .checkbox .icon {
+  font-weight: bold;
+  font-size: 2em;
+  flex: 0 0 2rem;
+  opacity: 0.05;
+}
+
+.person-lists .item .checkbox .text {
+  font-size: 1em;
+}
+
+.person-lists .item .checkbox .text > * {
+  display: block;
+}
+
+.person-lists .item .checkbox .text small {
+  margin: 0.25em 0 0.675em;
+  font-size: 0.65em;
+  line-height: 1.35;
+  font-style: italic;
+  opacity: 0.85;
+}
+
+.person-lists .item .checkbox:hover,
+.person-lists .item input[type="checkbox"]:focus + .checkbox {
+  background: rgba(0, 0, 0, 0.15);
+  border-color: rgba(255, 255, 255, 0.65);
+}
+
+.person-lists .item input[type="checkbox"]:checked + .checkbox {
+  background: rgba(11, 44, 11, 0.35) !important;
+  border-color: rgba(79, 212, 79, 0.75) !important;
+}
+
+.person-lists .item input[type="checkbox"]:checked + .checkbox .icon {
+  opacity: 1;
+}
+
+.person-lists .item .checkbox:active,
+.person-lists .item input[type="checkbox"]:active + .checkbox {
+  transform: scale(1.015);
+}

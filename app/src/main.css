@@ -1,0 +1,58 @@
+:root {
+  --bg-colour: #242424;
+  --text-colour: #fdf7f7f1;
+  --link-colour: #ffaeae;
+  --link-hocus-colour: #fff;
+
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color: var(--text-colour);
+  background-color: var(--bg-colour);
+}
+
+body {
+  min-height: 100vh;
+  font-size: 1.15rem;
+}
+
+a {
+  color: var(--link-colour);
+}
+
+a:hover,
+a:focus {
+  color: var(--link-hocus-colour);
+}
+
+/* Overlay state */
+
+.state {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: -1;
+  opacity: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.state .inner {
+  padding: 2rem;
+  text-align: center;
+}
+
+.state .inner p {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.state[data-active="true"] {
+  z-index: 5;
+  opacity: 1;
+}
