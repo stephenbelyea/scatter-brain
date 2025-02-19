@@ -27,6 +27,7 @@ jobs:
         run: |
           npm install 
           npm run prod
+          cat .env
         env:
           VITE_REACT_SANITY_API_TOKEN: ${{ secrets.VITE_REACT_SANITY_API_TOKEN }}
           VITE_REACT_SANITY_PROJECT_ID: ${{ secrets.VITE_REACT_SANITY_PROJECT_ID }}
