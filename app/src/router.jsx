@@ -1,7 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Dashboard, Person } from "./views";
+import { Dashboard, NotFound, Person } from "./views";
 
 export const appRouter = createBrowserRouter([
+  {
+    path: "*",
+    element: <NotFound />,
+  },
   {
     path: "/",
     element: <Dashboard />,
