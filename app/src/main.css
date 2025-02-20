@@ -23,6 +23,19 @@
   line-height: 1.65;
   color: var(--text-colour);
   background-color: var(--bg-colour);
+  font-size: 100%;
+}
+
+@media (max-width: 36rem) {
+  :root {
+    font-size: 85%;
+  }
+}
+
+@media (max-width: 28rem) {
+  :root {
+    font-size: 70%;
+  }
 }
 
 body {
